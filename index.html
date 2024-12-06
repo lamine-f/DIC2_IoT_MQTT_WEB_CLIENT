@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page Web</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="wrapper" >
+        <div class="app" id="switch-off">
+            <div id="buttons-container" >
+                <div id="off-button"></div>
+                <div id="on-button" ></div>
+            </div>
+        </div>
+    </div>
+    <!--JS SCRIPTS-->
+    <script src="./js/constants.js"></script>
+    <script src="./js/utils/localPersistence.js"></script>
+    <script src="./js/utils/remotePersistence.js"></script>
+    <script src="./js/logics/userManagement.js"></script>
+    <script src="./js/socket/socket.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script>
+        console.log(mqtt)
+        const url = 'ws://broker.emqx.io:8083/mqtt'
+        const client  = mqtt.connect(url, {})
+        client.on('connect', () => {
+            // Subscribe to a topic
+            client.subscribe('test', err => {
+                if (!err) {
+                    // Publish a message to a topic
+                    client.publish('test', 'Hello mqtt')
+                }
+            })
+        });
+        client.on('message', (topic, message) => {
+            console.log(topic.toString())
+            console.log(message.toString())
+            client.end()
+        })
+
+    </script>
+
+</body>
+</html>
