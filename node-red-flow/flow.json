@@ -1,0 +1,278 @@
+[
+    {
+        "id": "3ad7f678e18f5c39",
+        "type": "tab",
+        "label": "Flux 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "40e7eb7466c02d18",
+        "type": "function",
+        "z": "3ad7f678e18f5c39",
+        "name": "Set output message",
+        "func": "return msg.payload ?\n    { payload: \"Commande d'activation reçue\" } :\n    { payload: \"Commande d'extinction reçue\" };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "cb7847224f713357"
+            ]
+        ]
+    },
+    {
+        "id": "24dc8c2dc2c79d44",
+        "type": "function",
+        "z": "3ad7f678e18f5c39",
+        "name": "Notify change of status",
+        "func": "return { payload: msg.payload ? '1' : '0' };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 120,
+        "wires": [
+            [
+                "5d3068ad7d28a71f"
+            ]
+        ]
+    },
+    {
+        "id": "50eb7fb10a8a4470",
+        "type": "mqtt in",
+        "z": "3ad7f678e18f5c39",
+        "name": "LED status reception",
+        "topic": "@lord/led/1/management",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2b3c1c6dfee40d1a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "6a56f7abf091441f"
+            ]
+        ]
+    },
+    {
+        "id": "5d3068ad7d28a71f",
+        "type": "mqtt out",
+        "z": "3ad7f678e18f5c39",
+        "name": "",
+        "topic": "@lord/led/1/management",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2b3c1c6dfee40d1a",
+        "x": 1390,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6a56f7abf091441f",
+        "type": "function",
+        "z": "3ad7f678e18f5c39",
+        "name": "Parse to boolean",
+        "func": "return { payload: !!JSON.parse(msg.payload) };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "e53f964609adda2c",
+                "b0faef29dcb4bdfb",
+                "40e7eb7466c02d18"
+            ]
+        ]
+    },
+    {
+        "id": "d1fbd2306a9e1042",
+        "type": "function",
+        "z": "3ad7f678e18f5c39",
+        "name": "function 3",
+        "func": "return { payload: !!JSON.parse(msg.payload) };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 620,
+        "wires": [
+            [
+                "33f21d2e6443642c"
+            ]
+        ]
+    },
+    {
+        "id": "33f21d2e6443642c",
+        "type": "debug",
+        "z": "3ad7f678e18f5c39",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e53f964609adda2c",
+        "type": "ui_switch",
+        "z": "3ad7f678e18f5c39",
+        "name": "",
+        "label": "On/Off switch button",
+        "tooltip": "",
+        "group": "0b4c8e524f76ca66",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 560,
+        "y": 80,
+        "wires": [
+            [
+                "b0faef29dcb4bdfb"
+            ]
+        ]
+    },
+    {
+        "id": "b0faef29dcb4bdfb",
+        "type": "switch",
+        "z": "3ad7f678e18f5c39",
+        "name": "Triggering on value change",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "",
+                "vt": "prev"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 120,
+        "wires": [
+            [
+                "24dc8c2dc2c79d44"
+            ]
+        ]
+    },
+    {
+        "id": "cb7847224f713357",
+        "type": "ui_text",
+        "z": "3ad7f678e18f5c39",
+        "group": "0b4c8e524f76ca66",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "LED status message",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 720,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2b3c1c6dfee40d1a",
+        "type": "mqtt-broker",
+        "name": "EMQX - LED MANAGMENT ",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "0b4c8e524f76ca66",
+        "type": "ui_group",
+        "name": "Gestion de Led (avec l'application web + MQTT - Base de données)",
+        "tab": "64710c097bd1b4f2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "64710c097bd1b4f2",
+        "type": "ui_tab",
+        "name": "Ma page #6",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
