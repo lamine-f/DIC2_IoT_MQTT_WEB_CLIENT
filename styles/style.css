@@ -43,17 +43,11 @@
 }
 
 #off-button, #on-button {
+    cursor: pointer;
     width: 150px;
     height: 100px;
+    border-radius: 60px;
     /*background: rgba(255, 0, 0, 0.22);*/
-}
-
-#off-button {
-    border-radius: 60px;
-}
-
-#on-button {
-    border-radius: 60px;
 }
 
 .shadow-button {

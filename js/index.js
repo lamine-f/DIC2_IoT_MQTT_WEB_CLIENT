@@ -1,9 +1,13 @@
+const STATE = {
+    ON: 'switch-on',
+    OFF: 'switch-off'
+}
+
 const [state, setState] = [{value: STATE.OFF}, (value) => {
     state.value = value;
     app.setAttribute("id", value);
 }];
 
-const onRecoveryState = ({value}) => setState(value);
 const onReceivingMessage = ({value}) => setState(value === '1' ? STATE.ON:STATE.OFF);
 
 switchOffButton.addEventListener('click', () => {

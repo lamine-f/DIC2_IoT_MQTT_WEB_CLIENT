@@ -1,16 +1,16 @@
 [
     {
-        "id": "3ad7f678e18f5c39",
+        "id": "1249aff6ea109fc8",
         "type": "tab",
-        "label": "Flux 6",
+        "label": "Flux 7",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "40e7eb7466c02d18",
+        "id": "78f368caa087298c",
         "type": "function",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "Set output message",
         "func": "return msg.payload ?\n    { payload: \"Commande d'activation reçue\" } :\n    { payload: \"Commande d'extinction reçue\" };",
         "outputs": 1,
@@ -20,17 +20,17 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 280,
+        "y": 460,
         "wires": [
             [
-                "cb7847224f713357"
+                "11ebdca83d34391c"
             ]
         ]
     },
     {
-        "id": "24dc8c2dc2c79d44",
+        "id": "a657a0e37cb386ef",
         "type": "function",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "Notify change of status",
         "func": "return { payload: msg.payload ? '1' : '0' };",
         "outputs": 1,
@@ -39,18 +39,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1120,
-        "y": 120,
+        "x": 1140,
+        "y": 240,
         "wires": [
             [
-                "5d3068ad7d28a71f"
+                "b4c16816cf1a43ea"
             ]
         ]
     },
     {
-        "id": "50eb7fb10a8a4470",
+        "id": "3bc36e33f478cc92",
         "type": "mqtt in",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "LED status reception",
         "topic": "@lord/led/1/management",
         "qos": "2",
@@ -61,17 +61,17 @@
         "rh": 0,
         "inputs": 0,
         "x": 130,
-        "y": 160,
+        "y": 340,
         "wires": [
             [
-                "6a56f7abf091441f"
+                "2bd1ec1b7e89042e"
             ]
         ]
     },
     {
-        "id": "5d3068ad7d28a71f",
+        "id": "b4c16816cf1a43ea",
         "type": "mqtt out",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "",
         "topic": "@lord/led/1/management",
         "qos": "",
@@ -82,14 +82,14 @@
         "correl": "",
         "expiry": "",
         "broker": "2b3c1c6dfee40d1a",
-        "x": 1390,
-        "y": 120,
+        "x": 1450,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "6a56f7abf091441f",
+        "id": "2bd1ec1b7e89042e",
         "type": "function",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "Parse to boolean",
         "func": "return { payload: !!JSON.parse(msg.payload) };",
         "outputs": 1,
@@ -99,59 +99,23 @@
         "finalize": "",
         "libs": [],
         "x": 390,
-        "y": 160,
+        "y": 340,
         "wires": [
             [
-                "e53f964609adda2c",
-                "b0faef29dcb4bdfb",
-                "40e7eb7466c02d18"
+                "8c3a8d3b9e810358",
+                "f14e02fce35e6682",
+                "78f368caa087298c"
             ]
         ]
     },
     {
-        "id": "d1fbd2306a9e1042",
-        "type": "function",
-        "z": "3ad7f678e18f5c39",
-        "name": "function 3",
-        "func": "return { payload: !!JSON.parse(msg.payload) };",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 620,
-        "wires": [
-            [
-                "33f21d2e6443642c"
-            ]
-        ]
-    },
-    {
-        "id": "33f21d2e6443642c",
-        "type": "debug",
-        "z": "3ad7f678e18f5c39",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 380,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "e53f964609adda2c",
+        "id": "8c3a8d3b9e810358",
         "type": "ui_switch",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "",
         "label": "On/Off switch button",
         "tooltip": "",
-        "group": "0b4c8e524f76ca66",
+        "group": "1959c2ce2804ad20",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -171,17 +135,17 @@
         "animate": false,
         "className": "",
         "x": 560,
-        "y": 80,
+        "y": 260,
         "wires": [
             [
-                "b0faef29dcb4bdfb"
+                "f14e02fce35e6682"
             ]
         ]
     },
     {
-        "id": "b0faef29dcb4bdfb",
+        "id": "f14e02fce35e6682",
         "type": "switch",
-        "z": "3ad7f678e18f5c39",
+        "z": "1249aff6ea109fc8",
         "name": "Triggering on value change",
         "property": "payload",
         "propertyType": "msg",
@@ -196,18 +160,19 @@
         "repair": false,
         "outputs": 1,
         "x": 840,
-        "y": 120,
+        "y": 300,
         "wires": [
             [
-                "24dc8c2dc2c79d44"
+                "a657a0e37cb386ef",
+                "2e0a523b5b11a3a9"
             ]
         ]
     },
     {
-        "id": "cb7847224f713357",
+        "id": "11ebdca83d34391c",
         "type": "ui_text",
-        "z": "3ad7f678e18f5c39",
-        "group": "0b4c8e524f76ca66",
+        "z": "1249aff6ea109fc8",
+        "group": "1959c2ce2804ad20",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -221,8 +186,95 @@
         "fontSize": 16,
         "color": "#000000",
         "x": 720,
-        "y": 200,
+        "y": 380,
         "wires": []
+    },
+    {
+        "id": "3ffd4bb4db0a1f5b",
+        "type": "mqtt in",
+        "z": "1249aff6ea109fc8",
+        "name": "Get LED status",
+        "topic": "@lord/led/1/management",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2b3c1c6dfee40d1a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "21c7e274971d559d"
+            ]
+        ]
+    },
+    {
+        "id": "2ecad0b874261e84",
+        "type": "mysql",
+        "z": "1249aff6ea109fc8",
+        "mydb": "b796df3262208ecf",
+        "name": "storage",
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "2bd1ec1b7e89042e"
+            ]
+        ]
+    },
+    {
+        "id": "21c7e274971d559d",
+        "type": "function",
+        "z": "1249aff6ea109fc8",
+        "name": "Retrieve the last led status from the database",
+        "func": "return {topic:  \"SELECT * FROM status ORDER BY id DESC LIMIT 1\"};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 40,
+        "wires": [
+            [
+                "2ecad0b874261e84"
+            ]
+        ]
+    },
+    {
+        "id": "72bd24c5fe94f2ff",
+        "type": "mysql",
+        "z": "1249aff6ea109fc8",
+        "mydb": "b796df3262208ecf",
+        "name": "storage",
+        "x": 1400,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e0a523b5b11a3a9",
+        "type": "function",
+        "z": "1249aff6ea109fc8",
+        "name": "Store LED status in database",
+        "func": "let value = msg.payload ? \"1\":\"0\";\nlet id_object = 1;\nreturn {topic:  \"INSERT INTO status (id_object, value, id_user) VALUES (\"+id_object+\",'\"+value+\"', '761f605f-e1af-4ae5-871b-a9cd22d9bfe7')\"};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 360,
+        "wires": [
+            [
+                "72bd24c5fe94f2ff"
+            ]
+        ]
     },
     {
         "id": "2b3c1c6dfee40d1a",
@@ -256,20 +308,30 @@
         "sessionExpiry": ""
     },
     {
-        "id": "0b4c8e524f76ca66",
+        "id": "1959c2ce2804ad20",
         "type": "ui_group",
-        "name": "Gestion de Led (avec l'application web + MQTT - Base de données)",
-        "tab": "64710c097bd1b4f2",
+        "name": "Gestion de Led (avec l'application web + MQTT + Base de données)",
+        "tab": "157e823ef5526351",
         "order": 1,
         "disp": true,
-        "width": "6",
+        "width": 6,
         "collapse": false,
         "className": ""
     },
     {
-        "id": "64710c097bd1b4f2",
+        "id": "b796df3262208ecf",
+        "type": "MySQLdatabase",
+        "name": "remote mysql database",
+        "host": "mysql-iot-tp.alwaysdata.net",
+        "port": "3306",
+        "db": "iot-tp_1-bis",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "157e823ef5526351",
         "type": "ui_tab",
-        "name": "Ma page #6",
+        "name": "Ma page #7",
         "icon": "dashboard",
         "order": 1,
         "disabled": false,
