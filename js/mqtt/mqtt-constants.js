@@ -5,7 +5,7 @@ const Configuration = {
     clientId : 'webClientId_' + Math.random().toString(16).substring(2, 8),
 }
 
-const getOptions = client => ({
+const GetOptions = client => ({
     timeout: 5,
     keepAliveInterval: 60,
     onSuccess: () => {

@@ -5,21 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LED controller</title>
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./js/paho.javascript-1.0.3/paho-mqtt-min.js"></script>
+    <script src="js/libs/paho.javascript-1.0.3/paho-mqtt-min.js"></script>
 </head>
 <body>
     <div class="wrapper" >
         <div class="app" id="switch-off">
-            <div id="buttons-container" >
+            <div class="app-message" >
+                <h2>LED 1</h2>
+            </div>
+            <div class="buttons-container" >
                 <div id="off-button"></div>
                 <div id="on-button" ></div>
+            </div>
+            <p>DIC2 Génie Informatique </p>
+            <p id="app-infos">Dernière modification: 12/03/2025</p>
+            <p>Auteurs: </p>
+            <div class="app-actors-name" >
+                <ul>
+                    <li>Mariama <span class="actor-name" >baldé</span></li>
+                    <li>Mouhamed <span class="actor-name" >diagne</span></li>
+                    <li>Mouhamed Lamine <span class="actor-name" >faye</span></li>
+                </ul>
             </div>
         </div>
     </div>
     <!--JS SCRIPTS-->
-    <script src="js/ui-constants.js"></script>
-    <script src="js/mqtt-constants.js"></script>
-    <script src="js/mqtt.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="js/ui/ui-constants.js"></script>
+    <script src="js/mqtt/mqtt-constants.js"></script>
+    <script src="js/mqtt/mqtt.js"></script>
+    <script src="js/ui/ui.js"></script>
 </body>
 </html>

@@ -24,12 +24,23 @@
     background-image: url("../images/switch-on.png");
 }
 
-
 #switch-off {
     background-image: url("../images/switch-off.png");
 }
 
-#buttons-container {
+.app-message {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    color: #393838;
+}
+
+.buttons-container {
     position: absolute;
     width: 350px;
     height: 150px;
@@ -37,9 +48,8 @@
     justify-content: space-between;
     align-items: center;
     top: 50%;
-    left: 52%;
-    transform: translate(-50%, -50%) ;
-    /*border: 2px solid black;*/
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #off-button, #on-button {
@@ -47,9 +57,12 @@
     width: 150px;
     height: 100px;
     border-radius: 60px;
-    /*background: rgba(255, 0, 0, 0.22);*/
 }
 
-.shadow-button {
-    background: #c1c1c173;
+.app-actors-name {
+    padding-left: 25px;
+}
+
+.actor-name {
+    text-transform: uppercase;
 }
